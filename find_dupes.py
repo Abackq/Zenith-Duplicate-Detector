@@ -63,10 +63,10 @@ def write_duplicates_to_csv(groups: dict[str, list[str]], output_path: str) -> N
         group_id = 0
         for key, names in groups.items():
             if len(names) > 1:
-                for name in names:
+                duplicates = [name for name in names if name == key]
+                for name in duplicates:
                     writer.writerow([group_id, name])
                 group_id += 1
-        
 
 
 if __name__ == "__main__":
